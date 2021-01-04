@@ -1,0 +1,24 @@
+This is an outline of the steps needed to complete a cloud-based database for a mobile app on Microsoft Azure
+
+The basic parts are an app service and a SQL database, and these must be connected to each other, and to the app.
+
+Database setup is relatively straightforward using the prompts through the Azure portal. Requires setting a server name, admin user name, and admin password, 
+along with setting up the resource levels required.
+After setup, go to firewall settings and allow other Azure services to connect:
+From overview page, Set Server Firewall -> Allow Azure Services
+
+App service setup is a bit more complicated, as parts require connecting to the database, and connection to GitHub for deployment of backend code.
+After going through the App Service setup on Azure, the first step is to allow mobile devices to connect.
+Configuration -> New Application Setting -> String: MobileAppsManagement_EXTENSION_VERSION; Value: latest
+Then set connection strings to database. These are very format specific, and errors here can cause Internal Server Errors
+Configuration -> New Connection String -> Name: MS_TableConnectionString; Value: Data Source = tcp:{server name}, 1433; Initial Catalog = {database name}; User ID = {name@server, copied from database connection strings}; Password = {password} 
+Type: SQLAzure
+
+Now setup backend functionality:
+App service -> Deployment Center -> GitHub -> Kudu Build Service -> Choose repositories -> Finish
+
+These backends have been from LaloCo template, and a new repository must be created, with editing of server.js to have the right tables, and then editing/creation of .js and .json
+files in Tables folder
+
+On the visual studio side, need to add Microsoft.Azure.Mobile.Client nuget package, and set a MobileServiceClient in App.xaml.cs with the url for the App service location
+
