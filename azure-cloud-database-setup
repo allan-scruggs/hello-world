@@ -5,6 +5,7 @@ The basic parts are an app service and a SQL database, and these must be connect
 Database setup is relatively straightforward using the prompts through the Azure portal. Requires setting a server name, admin user name, and admin password, 
 along with setting up the resource levels required.
 After setup, go to firewall settings and allow other Azure services to connect:
+Add Client IP (+ Client IP)
 From overview page, Set Server Firewall -> Allow Azure Services
 
 App service setup is a bit more complicated, as parts require connecting to the database, and connection to GitHub for deployment of backend code.
