@@ -14,6 +14,8 @@ Then set connection strings to database. These are very format specific, and err
 Configuration -> New Connection String -> Name: MS_TableConnectionString; Value: Data Source = tcp:{server name}, 1433; Initial Catalog = {database name}; User ID = {name@server, copied from database connection strings}; Password = {password} 
 Type: SQLAzure
 
+Here's a copy of a working connection string: Data Source=tcp:udemytravel.database.windows.net,1433;Initial Catalog=travelrecords;User ID=ascruggs@udemytravel;Password=All31mon
+
 Now setup backend functionality:
 App service -> Deployment Center -> GitHub -> Kudu Build Service -> Choose repositories -> Finish
 
